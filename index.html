@@ -1,0 +1,677 @@
+<html>
+
+<head>
+
+</head>
+
+<body background="sacmaladimpho.png">
+
+<center>
+
+<img src="anaspho.jpg" width="300" height="300">
+
+<br><br>
+
+<div class="mektup-alani" id="mektupAlani">
+  <div class="mektup-baslik">♡ askima bi zarf ♡</div>
+
+  <div class="zarf" onclick="mektubuAc()">
+    <div class="zarf-arka"></div>
+    <div class="mektup-kagit" id="mektupKagit">
+      <span class="mektup-kalp">♡</span>
+      <p>senin için...</p>
+      <small>tıkla ve aç ♡</small>
+    </div>
+    <div class="zarf-on"></div>
+    <div class="zarf-kapak" id="zarfKapak"></div>
+    <div class="zarf-muhur">♥</div>
+  </div>
+</div>
+
+<div class="mektup-perde" id="mektupPerde" onclick="mektubuKapat()">
+  <div class="mektup-icerik" onclick="event.stopPropagation()">
+    <button class="mektup-kapat" onclick="mektubuKapat()">×</button>
+    <div class="icerik-kalp">♡</div>
+    <h3>askima bi zarf  ♡</h3>
+    <p>
+      askim bazen oyle bi an geliyo ki anlatmak istedigim asiri fazla sey oluyor ama
+      nerden baslayacagimi bile bilemiyorum.
+      <br><br>
+      ölene kadar benim olmasını istediğim tek kisisn askim
+      seninle yasadigim biriktirdigim anılar o kadddar degerli ki anlatamamm
+      <br><br>
+      E ♡ N
+    </p>
+    <div class="mektup-imza">senicokseviooommm - askin. ♡</div>
+  </div>
+</div>
+
+<style>
+.mektup-alani {
+  position: fixed;
+  top: 155px;
+  right: 260px;
+  width: 190px;
+  z-index: 900;
+  text-align: center;
+  font-family: sans-serif;
+  color: #d94f91;
+}
+
+.mektup-baslik {
+  font-size: 13px;
+  margin-bottom: 18px;
+}
+
+.zarf {
+  width: 150px;
+  height: 100px;
+  position: relative;
+  margin: auto;
+  cursor: pointer;
+  filter: drop-shadow(0 5px 5px #d97ca833);
+  transition: transform .25s;
+}
+
+.zarf:hover {
+  transform: translateY(-5px) rotate(-2deg);
+}
+
+.zarf-arka {
+  position: absolute;
+  inset: 0;
+  background: #f6b6d1;
+  border: 2px solid #dc80aa;
+  border-radius: 4px;
+}
+
+.mektup-kagit {
+  position: absolute;
+  left: 12px;
+  top: 4px;
+  width: 122px;
+  height: 83px;
+  background: #fff8fc;
+  border: 1px solid #edb1cd;
+  box-sizing: border-box;
+  transition: transform .5s, top .5s;
+  padding: 8px 2px;
+  color: #d45c91;
+}
+
+.mektup-kagit p {
+  font-size: 11px;
+  margin: 5px 0;
+}
+
+.mektup-kagit small {
+  font-size: 8px;
+}
+
+.mektup-kalp {
+  font-size: 17px;
+}
+
+.zarf-on {
+  position: absolute;
+  inset: 0;
+  background: #f9c7dc;
+  clip-path: polygon(0 100%, 50% 43%, 100% 100%);
+  border-radius: 3px;
+}
+
+.zarf-kapak {
+  position: absolute;
+  inset: 0;
+  background: #f3a9ca;
+  clip-path: polygon(0 0, 100% 0, 50% 62%);
+  transform-origin: top;
+  transition: transform .45s;
+  filter: drop-shadow(0 2px 1px #d77ba0);
+}
+
+.mektup-muhur {
+  position: absolute;
+  top: 39px;
+  left: 65px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #df6d9e;
+  color: white;
+  line-height: 22px;
+  font-size: 13px;
+}
+
+.mektup-perde {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: #44203399;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.mektup-icerik {
+  position: relative;
+  width: 340px;
+  max-width: 100%;
+  background: #fff7fb;
+  border: 2px solid #efb4d0;
+  border-radius: 8px;
+  padding: 30px 24px;
+  box-sizing: border-box;
+  color: #a94475;
+  text-align: center;
+  box-shadow: 0 10px 35px #42172d55;
+  animation: mektupGel .35s ease;
+}
+
+.mektup-icerik h3 {
+  font-size: 18px;
+}
+
+.mektup-icerik p {
+  font-size: 13px;
+  line-height: 1.9;
+}
+
+.icerik-kalp {
+  font-size: 32px;
+  color: #e77aaa;
+}
+
+.mektup-imza {
+  margin-top: 20px;
+  font-size: 13px;
+}
+
+.mektup-kapat {
+  position: absolute;
+  top: 7px;
+  right: 10px;
+  background: none;
+  border: none;
+  color: #c45a8b;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+@keyframes mektupGel {
+  from { opacity: 0; transform: translateY(12px) scale(.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+</style>
+
+<script>
+function mektubuAc() {
+  document.getElementById("mektupPerde").style.display = "flex";
+}
+
+function mektubuKapat() {
+  document.getElementById("mektupPerde").style.display = "none";
+}
+</script>
+
+<style>
+/* 1. PIXEL KEDİ */
+#pixelKedi {
+  position: fixed;
+  bottom: 12px;
+  left: 12px;
+  z-index: 9998;
+  font-size: 38px;
+  cursor: pointer;
+  animation: kediZiplama 2s infinite ease-in-out;
+}
+@keyframes kediZiplama {
+  50% { transform: translateY(-6px); }
+}
+
+/* 2. EFE.EXE PENCERESİ */
+#efeAc {
+  position: fixed;
+  bottom: 65px;
+  right: 12px;
+  z-index: 9998;
+  background: #ffc1dc;
+  color: #92365f;
+  border: 1px solid #ff8fc7;
+  border-radius: 14px;
+  padding: 10px 14px;
+  cursor: pointer;
+  box-shadow: 0 0 12px #ffc1dc;
+}
+#efePencere {
+  display: none;
+  position: fixed;
+  z-index: 10000;
+  width: 270px;
+  max-width: 80vw;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff0f7;
+  color: #92365f;
+  border: 2px solid #ff9dcb;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px #0004;
+  font-family: monospace;
+}
+#efePencereBaslik {
+  background: #ffc1dc;
+  padding: 10px;
+  font-weight: bold;
+}
+#efePencereIcerik {
+  padding: 18px;
+  line-height: 1.8;
+  text-align: center;
+}
+.exeKapat {
+  border: 0;
+  background: #ffb0d2;
+  color: #78284d;
+  padding: 7px 14px;
+  border-radius: 9px;
+  cursor: pointer;
+}
+
+/* 3. YAPISKAN NOTLAR */
+.pembeNot {
+  position: fixed;
+  z-index: 997;
+  padding: 12px 10px;
+  width: 105px;
+  text-align: center;
+  font-size: 12px;
+  color: #944467;
+  background: #ffe2a8;
+  box-shadow: 2px 4px 10px #0002;
+  transform: rotate(-5deg);
+  pointer-events: none;
+}
+.notBir {
+  left: 12px;
+  top: 35%;
+}
+.notIki {
+  right: 12px;
+  bottom: 30%;
+  background: #ffd5e8;
+  transform: rotate(5deg);
+}
+@media (max-width: 500px) {
+  .pembeNot {
+    width: 75px;
+    padding: 8px 5px;
+    font-size: 10px;
+  }
+}
+
+/* 4. ASK YUKLEME */
+#askKutusu {
+  position: fixed;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9997;
+  width: 175px;
+  padding: 10px;
+  background: #fff0f7;
+  border: 1px solid #ffacd0;
+  border-radius: 13px;
+  text-align: center;
+  color: #a13d70;
+  font: 12px monospace;
+  box-shadow: 0 0 12px #ffc1dc;
+}
+#askCubukDis {
+  height: 8px;
+  background: #f7d1e3;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 7px;
+}
+#askCubukIc {
+  height: 100%;
+  width: 0%;
+  background: #f26eaa;
+  border-radius: 10px;
+  transition: width 0.15s;
+}
+#askSonuc {
+  display: none;
+  margin-top: 7px;
+  font-size: 11px;
+}
+#askBaslat {
+  margin-top: 6px;
+  border: 0;
+  background: #ffc1dc;
+  color: #92365f;
+  padding: 5px 9px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+</style>
+
+<!-- 1. PIXEL KEDI -->
+<div id="pixelKedi" onclick="kediTikla()" title="Kediye tıkla!">🐈</div>
+
+
+<!-- 3. YAPISKAN NOTLAR -->
+<div class="pembeNot notBir">
+  not ♡<br><br>
+  bana bir ömür verdiler ben o ömrün en güzel anlamını sende buldum askımbalımciceğimm💗
+</div>
+
+<div class="pembeNot notIki">
+  unutma!<br><br>
+  eğer bir gün bana bu dünyada en cok neyi sevdin diye sorarlarsa seninle gecirdigim günleri anlatırım balım cünkü ben bu dünyada pek cok güzel sey görebilirim ama hicbiri senin hayatımda olmanın yerini tutamaaazzz 🎀
+</div>
+
+<!-- 4. ASK YUKLEME CUBUGU -->
+<div id="askKutusu">
+  <div id="askBaslik">aşk yükleniyor mu? ♡</div>
+  <div id="askCubukDis">
+    <div id="askCubukIc"></div>
+  </div>
+  <button id="askBaslat" onclick="askiYukle()">başlat ♡</button>
+  <div id="askSonuc">sonuç: cok sevilioo 💗</div>
+</div>
+
+<script>
+function kediTikla() {
+  const mesajlar = [
+    "miyavv nur seni sevio ♡"
+  ];
+  alert(mesajlar[Math.floor(Math.random() * mesajlar.length)]);
+}
+
+function efePencereAc() {
+  document.getElementById("efePencere").style.display = "block";
+}
+
+function efePencereKapat() {
+  document.getElementById("efePencere").style.display = "none";
+}
+
+let yukleniyor = false;
+
+function askiYukle() {
+  if (yukleniyor) return;
+  yukleniyor = true;
+
+  let yuzde = 0;
+  const cubuk = document.getElementById("askCubukIc");
+  const baslik = document.getElementById("askBaslik");
+  const buton = document.getElementById("askBaslat");
+  const sonuc = document.getElementById("askSonuc");
+
+  buton.disabled = true;
+  buton.textContent = "yükleniyor...";
+
+  const zamanlayici = setInterval(function() {
+    yuzde += 2;
+    cubuk.style.width = yuzde + "%";
+    baslik.textContent = "aşk yükleniyor... %" + yuzde;
+
+    if (yuzde >= 100) {
+      clearInterval(zamanlayici);
+      baslik.textContent = "yükleme tamamlandı ♡";
+      sonuc.style.display = "block";
+      buton.textContent = "tekrar yükle";
+      buton.disabled = false;
+      yukleniyor = false;
+      buton.onclick = function() {
+        sonuc.style.display = "none";
+        cubuk.style.width = "0%";
+        baslik.textContent = "aşk yükleniyor mu? ♡";
+        buton.onclick = askiYukle;
+        askiYukle();
+      };
+    }
+  }, 40);
+}
+</script>
+
+
+<div id="saatim" style="position:fixed;top:55px;right:15px;z-index:9999;background:#ffe0ef;color:#c23c7b;border:1px solid #ff9ac8;border-radius:15px;padding:10px 14px;font-size:16px;font-family:monospace;">
+Saat yükleniyor...
+</div>
+
+<script>
+(function() {
+  function saatiYaz() {
+    var saat = document.getElementById("saatim");
+    if (saat) {
+      var simdi = new Date();
+      saat.innerHTML = simdi.toLocaleTimeString("tr-TR");
+    }
+  }
+  saatiYaz();
+  setInterval(saatiYaz, 1000);
+})();
+</script>
+</body>
+
+
+<button onclick="gizliMesajiAc()" style="
+position:fixed;
+bottom:55px;
+right:15px;
+z-index:999;
+background:#ffc1dc;
+color:#a83269;
+border:1px solid #ff8fc7;
+border-radius:20px;
+padding:10px 14px;
+font-size:13px;
+cursor:pointer;
+box-shadow:0 3px 12px #ffc1dc;
+">tıkla bakim ♡</button>
+
+<div id="gizliMesaj" style="
+display:none;
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+width:75%;
+max-width:300px;
+z-index:1001;
+background:#fff0f7;
+color:#a83269;
+border:2px solid #ffadd2;
+border-radius:20px;
+padding:25px 20px;
+text-align:center;
+box-shadow:0 0 0 100vmax rgba(60,20,40,0.35);
+font-size:16px;
+line-height:1.8;
+">
+  <div style="font-size:28px;">🎀♡</div>
+  <p>askim bil ki</p>
+  <p><b>iyi ki varsin bitanem. seni düsünebildiğinden bile daha cok seviyorum. ♡</b></p>
+  <button onclick="document.getElementById('gizliMesaj').style.display='none'"
+  style="background:#ffadd2;border:0;border-radius:12px;padding:8px 15px;color:#8e2859;">
+  kapat ♡
+  </button>
+</div>
+
+<script>
+function gizliMesajiAc() {
+  document.getElementById("gizliMesaj").style.display = "block";
+}
+</script>
+</body>
+
+
+<script>
+function kalpUcur() {
+  const kalp = document.createElement("div");
+  kalp.textContent = ["♡", "♥", "୨୧", "✧"][Math.floor(Math.random() * 4)];
+
+  kalp.style.position = "fixed";
+  kalp.style.left = Math.random() * 100 + "vw";
+  kalp.style.bottom = "-30px";
+  kalp.style.color = ["#ff8fc7", "#ffb6d9", "#f7a8d4"][Math.floor(Math.random() * 3)];
+  kalp.style.fontSize = (14 + Math.random() * 16) + "px";
+  kalp.style.pointerEvents = "none";
+  kalp.style.zIndex = "998";
+  kalp.style.transition = "transform 5s linear, opacity 5s linear";
+
+  document.body.appendChild(kalp);
+
+  requestAnimationFrame(() => {
+    kalp.style.transform = "translateY(-110vh) rotate(25deg)";
+    kalp.style.opacity = "0";
+  });
+
+  setTimeout(() => kalp.remove(), 5100);
+}
+
+setInterval(kalpUcur, 900);
+</script>
+</body>
+
+</center>
+
+<style>
+.ask-sticker {
+  position: fixed;
+  z-index: 997;
+  pointer-events: none;
+  color: #e96ba4;
+  background: rgba(255, 225, 239, 0.8);
+  border: 1px dashed #f29bc2;
+  border-radius: 8px;
+  padding: 7px 10px;
+  font-size: 20px;
+  box-shadow: 2px 3px 0 #f8c1d9;
+}
+
+.sticker-one { top: 15%; left: 18px; transform: rotate(-10deg); }
+.sticker-two { top: 32%; right: 20px; transform: rotate(12deg); }
+.sticker-three { bottom: 25%; left: 20px; transform: rotate(-7deg); }
+.sticker-four { top: 60%; right: 16px; transform: rotate(9deg); }
+.sticker-five { bottom: 12%; left: 45%; transform: rotate(-12deg); }
+
+#pembe-isik {
+  position: fixed;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,135,192,0.22), rgba(255,175,215,0.12) 40%, transparent 72%);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 996;
+}
+</style>
+
+
+
+<div class="ask-sticker sticker-two">♡</div>
+<div class="ask-sticker sticker-three">✉</div>
+<div class="ask-sticker sticker-five">ღ</div>
+
+<div id="pembe-isik"></div>
+
+<script>
+const pembeIsik = document.getElementById("pembe-isik");
+
+document.addEventListener("mousemove", function(e) {
+  pembeIsik.style.left = e.clientX + "px";
+  pembeIsik.style.top = e.clientY + "px";
+});
+</script>
+
+<div class="ani-seridi">
+  
+
+  <div class="ani-kartlari">
+    <div class="ani-karti">
+      <img src="q1acgh1.jfif" alt="Anımız">
+      <p>senicokseviyorumbebiss ♡</p>
+    </div>
+
+    <div class="ani-karti">
+      <img src="sarilma.png" alt="Anımız">
+      <p>E ♡ N</p>
+    </div>
+
+    <div class="ani-karti">
+      <img src="yanarimyanarim.jfif" alt="Anımız">
+      <p>kekimmekimherseyimm ♡</p>
+    </div>
+  </div>
+</div>
+
+<style>
+.ani-seridi {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  width: 540px;
+  max-width: calc(100vw - 30px);
+  box-sizing: border-box;
+  margin: 0;
+  padding: 18px;
+  text-align: center;
+  color: #d94f91;
+  font-family: sans-serif;
+  z-index: 1000;
+}
+
+.ani-seridi h3 {
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.ani-kartlari {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+.ani-karti {
+  width: 155px;
+  box-sizing: border-box;
+  padding: 10px 10px 4px;
+  background: #fff7fb;
+  border: 1px solid #f5c2d9;
+  box-shadow: 0 4px 12px #e8a4c333;
+  transform: rotate(-3deg);
+  transition: transform 0.25s;
+}
+
+.ani-karti:nth-child(2) {
+  transform: rotate(3deg);
+}
+
+.ani-karti:hover {
+  transform: rotate(0deg) translateY(-5px);
+}
+
+.ani-karti img {
+  width: 100%;
+  height: 145px;
+  object-fit: cover;
+  display: block;
+}
+
+.ani-karti p {
+  font-size: 12px;
+  margin: 10px 0;
+}
+</style>
+
+</body>
+
+</html>
